@@ -2,14 +2,20 @@ version: '3'
 
 services: 
     db:
-       image: percona:5.7
-       container_name: db
-       environment:
-           MYSQL_ROOT_PASSWORD: toor
-       volumes:
-           - ./db/db_data:/var/lib/mysql
-           - ./db/conf:/etc/mysql/conf.d/custom.cnf
-       ports:
-           - 3309:3306/tcp
-
+        image: percona:5.7
+        container_name: db
+        environment:
+            MYSQL_ROOT_PASSWORD: toor
+        volumes:
+            - ./db/db_data:/var/lib/mysql
+            - ./db/conf:/etc/mysql/conf.d/custom.cnf
+        ports:
+            - 3309:3306/tcp
+    tomcat:
+        image: tomcat:10-jdk11 
+        container_name: tomcat
+        volumes:
+            - ./tomcat/webapps:/usr/local/tomcat/webapps
+        ports:
+            - 8082:8080
 
