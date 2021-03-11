@@ -17,6 +17,7 @@ services:
         environment:
             db_username: root
             db_password: toor
+            db_url: jdbc:mysql://192.168.0.17:3309/test-case?useUnicode=yes&characterEncoding=UTF-8
         volumes:
             - ./tomcat/webapps:/usr/local/tomcat/webapps
             - ./tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
