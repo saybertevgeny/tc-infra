@@ -12,10 +12,15 @@ services:
         ports:
             - 3309:3306/tcp
     tomcat:
-        image: tomcat:10-jdk11 
+        image: tomcat:9-jdk11 
         container_name: tomcat
+        environment:
+            db_username: root
+            db_password: toor
         volumes:
             - ./tomcat/webapps:/usr/local/tomcat/webapps
+            - ./tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+            - ./tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml
         ports:
             - 8082:8080
 
